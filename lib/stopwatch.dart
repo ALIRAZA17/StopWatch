@@ -170,7 +170,7 @@ class StopWatchState extends State<StopWatch> {
             children: [
               const Spacer(),
               Container(
-                color: Theme.of(context).primaryColorDark,
+                color: Colors.lightBlue,
                 child: ListTile(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 50),
                   title: Text(
