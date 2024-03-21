@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 
 class StopWatch extends StatefulWidget {
   static const route = '/stopwatch';
-  final String name;
-  final String email;
-  const StopWatch({super.key, required this.name, required this.email});
+  const StopWatch({super.key});
   @override
   State createState() => StopWatchState();
 }
