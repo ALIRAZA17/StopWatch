@@ -16,6 +16,7 @@ class StopwatchApp extends StatelessWidget {
         StopWatch.route: (context) => const StopWatch(),
       },
       initialRoute: '/',
+      debugShowCheckedModeBanner: false,
     );
   }
 }
