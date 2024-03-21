@@ -38,7 +38,14 @@ class StopWatchState extends State<StopWatch> {
     String name = ModalRoute.of(context)?.settings.arguments?.toString() ?? "";
     return Scaffold(
       appBar: AppBar(
-        title: Text("Name is $name"),
+        title: Text(
+          "Runner Name is $name",
+          style: const TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       body: Column(
         children: <Widget>[
@@ -51,23 +58,23 @@ class StopWatchState extends State<StopWatch> {
 
   Container _buildCounter(BuildContext context) {
     return Container(
-      color: Theme.of(context).primaryColor,
+      color: Theme.of(context).focusColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
             'Laps: ${laps.length + 1}',
-            style: Theme.of(context)
-                .textTheme
-                .titleMedium
-                ?.copyWith(color: Colors.white),
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  color: Colors.black,
+                ),
           ),
           Text(
-            _secondsText(milliseconds!),
-            style: Theme.of(context)
-                .textTheme
-                .headlineSmall
-                ?.copyWith(color: Colors.white),
+            _secondsText(
+              milliseconds!,
+            ),
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  color: Colors.black,
+                ),
           ),
           const SizedBox(height: 20),
           _buildControls()
@@ -159,10 +166,26 @@ class StopWatchState extends State<StopWatch> {
         itemCount: laps.length,
         itemBuilder: (context, index) {
           final milliseconds = laps[index];
-          return ListTile(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 50),
-            title: Text('Lap ${index + 1}'),
-            trailing: Text(_secondsText(milliseconds)),
+          return Column(
+            children: [
+              const Spacer(),
+              Container(
+                color: Theme.of(context).primaryColorDark,
+                child: ListTile(
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 50),
+                  title: Text(
+                    'Lap ${index + 1}',
+                    style: const TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  trailing: Text(
+                    _secondsText(
+                      milliseconds,
+                    ),
+                    style: const TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                ),
+              ),
+            ],
           );
         },
       ),
