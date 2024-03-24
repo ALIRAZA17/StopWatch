@@ -91,12 +91,12 @@ class StopWatchState extends State<StopWatch> {
           onPressed: isTicking
               ? null
               : () {
-                  timer = Timer.periodic(
-                      const Duration(milliseconds: 100), _onTick);
                   setState(() {
                     milliseconds = 0;
                     isTicking = true;
                   });
+                  timer = Timer.periodic(
+                      const Duration(milliseconds: 100), _onTick);
                 },
           child: const Text('Start'),
         ),
